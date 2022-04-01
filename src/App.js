@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import Coins from './components/Coins'
 import Coin from './routes/Coin'
 import Navbar from "./components/Navbar";
+import './index.css'
 
 function App() {
   
@@ -14,7 +15,7 @@ function App() {
   useEffect(()=>{
     axios.get(url).then((response)=>{
       setCoins(response.data)
-      console.log(response.data[0])
+      //console.log(response.data[0])
     }).catch((error)=>{
       console.log(error)
     })
@@ -26,11 +27,8 @@ function App() {
         <Route path='/' element={<Coins coins={coins} />}/>
         <Route path='/coin' element={<Coin />}>
           <Route path=':coinId' element={<Coin />} />
-        
         </Route>
-      
       </Routes>
-      <Coins coins={coins}/>
     </>
   );
 }
